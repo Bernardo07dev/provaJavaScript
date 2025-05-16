@@ -1,18 +1,19 @@
-const caixaTexto = document.getElementById("inputCor");
+const caixaTexto = document.getElementById("input");
 const listaDeCores = document.getElementById("listaCores");
 
 let listaCores = JSON.parse(localStorage.getItem("cores")) || [];
 
-const coresComCodigo = {
-  red: "#FF0000",
-  blue: "#0000FF",
-  green: "#008000",
-  yellow: "#FFFF00",
-  purple: "#800080",
-  orange: "#FFA500",
-  black: "#000000",
-  white: "#FFFFFF",
-  pink: "#FFC0CB",
+const cores= {
+  rosa: "#FFC0CB",
+  amarelo: "#FFFF00",
+  roxo: "#800080",
+  vermelho: "#FF0000",
+  azul: "#0000FF",
+  laranja: "#FFA500",
+  preto: "#000000",
+  branco: "#FFFFFF",
+  verde: "#008000",
+  azulclaro: "#3db5ff",
 };
 
 function mostrarLista() {
@@ -38,7 +39,7 @@ caixaTexto.addEventListener("keydown", function (evento) {
     let corDigitada = caixaTexto.value.trim().toLowerCase();
 
     if (corDigitada) {
-      let codigoCor = coresComCodigo[corDigitada] || "";
+      let codigoCor = cores[corDigitada] || "";
 
       listaCores.unshift({
         nome: corDigitada,
