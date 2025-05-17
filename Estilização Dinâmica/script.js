@@ -54,5 +54,13 @@ campoEntrada.addEventListener("keydown", function (e) {
   }
 });
 
+const botaoLimpar = document.getElementById("limpar");
+
+botaoLimpar.addEventListener("click", function () {
+  coresSalvas = [];
+  localStorage.removeItem("cores");
+  atualizarLista();
+});
+
 // Inicializa a lista ao carregar
 atualizarLista();

@@ -14,7 +14,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; 
     margin-top: 20px;
 }
 
@@ -42,4 +41,14 @@ li {
     margin: 35px 0;
     color: white;
     border-radius: 5px;
+}
+
+button{
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    cursor: pointer;
 }
