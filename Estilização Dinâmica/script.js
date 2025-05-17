@@ -1,9 +1,9 @@
-const caixaTexto = document.getElementById("input");
-const listaDeCores = document.getElementById("listaCores");
+const campoEntrada = document.getElementById("input");
+const listaUl = document.getElementById("listaCores");
 
-let listaCores = JSON.parse(localStorage.getItem("cores")) || [];
+let coresSalvas = JSON.parse(localStorage.getItem("cores")) || [];
 
-const cores= {
+const mapaCores = {
   rosa: "#FFC0CB",
   amarelo: "#FFFF00",
   roxo: "#800080",
@@ -14,45 +14,45 @@ const cores= {
   branco: "#FFFFFF",
   verde: "#008000",
   azulclaro: "#3db5ff",
+  marrom: "#632100"
 };
 
-function mostrarLista() {
-  listaDeCores.innerHTML = "";
-  //lenght para contar qnts elementos tem na lista
-  for (let i = 0; i < listaCores.length; i++) {
-    let itemDaLista = document.createElement("li");
-    itemDaLista.textContent = listaCores[i].nome;
+function atualizarLista() {
+  listaUl.innerHTML = "";
 
-    if (listaCores[i].codigo) {
-      itemDaLista.style.backgroundColor = listaCores[i].codigo;
-    } else {
-      itemDaLista.style.backgroundColor = "#ccc";
-      itemDaLista.style.color = "#000";
+  coresSalvas.forEach((cor) => {
+    const item = document.createElement("li");
+    item.textContent = cor.nome;
+    item.style.backgroundColor = cor.codigo || "#ccc";
+
+    // Se a cor for clara, muda a cor da fonte para preto
+    if (!cor.codigo) {
+      item.style.color = "#000";
     }
 
-    listaDeCores.appendChild(itemDaLista);
-  }
+    listaUl.appendChild(item);
+  });
 }
 
-caixaTexto.addEventListener("keydown", function (evento) {
-  if (evento.key === "Enter") {
-    let corDigitada = caixaTexto.value.trim().toLowerCase();
+campoEntrada.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const entrada = campoEntrada.value.trim().toLowerCase();
 
-    if (corDigitada) {
-      let codigoCor = cores[corDigitada] || "";
+    if (entrada !== "") {
+      const corHex = mapaCores[entrada] || "";
 
-      listaCores.unshift({
-        nome: corDigitada,
-        codigo: codigoCor,
+      coresSalvas.unshift({
+        nome: entrada,
+        codigo: corHex
       });
 
-      localStorage.setItem("cores", JSON.stringify(listaCores));
+      localStorage.setItem("cores", JSON.stringify(coresSalvas));
 
-      mostrarLista();
-
-      caixaTexto.value = "";
+      atualizarLista();
+      campoEntrada.value = "";
     }
   }
 });
 
-mostrarLista();
+// Inicializa a lista ao carregar
+atualizarLista();
