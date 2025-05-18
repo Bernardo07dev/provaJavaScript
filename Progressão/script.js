@@ -7,7 +7,7 @@ function verifica(){
         alert("Insira três números inteiros positivos.");
         return;
     }
-
+    const mensagem = "Os proximos termos da sequencia são:"
     let numa, numb, numc, numd, nume;
 
     if (num2 - num1 == num3 - num2){
@@ -17,7 +17,7 @@ function verifica(){
         numc = numb + sub;
         numd = numc + sub;
         nume = numd + sub;
-        alert("É uma sequencia aritmetrica")
+        alert("É uma sequencia aritmetrica!")
     }else if (num2 / num1 == num3 / num2){
         const div = num3 / num2
         numa = num3 * div;
@@ -25,10 +25,10 @@ function verifica(){
         numc = numb * div;
         numd = numc * div;
         nume = numd * div;
-        alert("É uma sequencia geometrica")
+        alert("É uma sequencia geometrica!")
     }
     else{
-        alert("É uma sequencia aleatória")
+        alert("É uma sequencia aleatória!")
         const aleat = num1 + num2
         numa = num3 + aleat;
         numb = numa + aleat;
@@ -37,7 +37,8 @@ function verifica(){
         nume = numd + aleat;
 
     }
-        document.getElementById("resul").innerHTML = numa;
+    document.getElementById("mensagem").innerHTML = mensagem;
+    document.getElementById("resul").innerHTML = numa;
     document.getElementById("resul1").innerHTML = numb;
     document.getElementById("resul2").innerHTML = numc;
     document.getElementById("resul3").innerHTML = numd;
